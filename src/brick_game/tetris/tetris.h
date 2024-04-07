@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 
-#include "common.h"
+#include "../../common.h"
 
 #define SPEED 500
 #define SPEED_STEP 30

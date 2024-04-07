@@ -3,8 +3,8 @@
 
 #include <unistd.h>
 
-#include "../../gui/cli/console_front.h"
-#include "tetris.h"
+#include "gui/cli/console_front.h"
+#include "brick_game/tetris/tetris.h"
 
 void updateUserAction();
 

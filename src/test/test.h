@@ -3,7 +3,7 @@
 
 #include <check.h>
 
-#include "../brick_game/tetris/common.h"
+#include "../common.h"
 #include "../brick_game/tetris/tetris.h"
 
 Suite *lib_suite(void);

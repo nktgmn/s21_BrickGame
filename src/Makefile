@@ -1,9 +1,11 @@
 CFLAGS = -Wall -Wextra -Werror
-INSTALL_FILES = tetris.c ../../gui/cli/console_front.c game.c common.c -lncurses
-TEST_FILES = ../../test/test.c tetris.c common.c ../../gui/cli/console_front.c -lcheck -lncurses
-GCOV_FILES = ../../test/test.c tetris.c common.c -lcheck
+INSTALL_FILES = brick_game/tetris/tetris.c gui/cli/console_front.c game.c common.c -lncurses
+TEST_FILES = test/test.c brick_game/tetris/tetris.c common.c gui/cli/console_front.c -lcheck -lncurses
+GCOV_FILES = test/test.c brick_game/tetris/tetris.c common.c -lcheck
 GCOVFLAGS = -fprofile-arcs -ftest-coverage --coverage
-DIST_DIR = ../../s21_Tetris
+DIST_DIR = s21_Tetris
+
+.PHONY: test
 
 UNAME_S = $(shell uname)
 
@@ -27,9 +29,9 @@ uninstall:
 	rm -rf build
 
 test:
-	echo 0 > ../../test/max_score.txt
-	gcc $(CFLAGS) $(TEST_FILES) $(ADD_LDFLAGS) -o ../../test/test
-	cd ../../test && ./test
+	echo 0 > test/max_score.txt
+	gcc $(CFLAGS) $(TEST_FILES) $(ADD_LDFLAGS) -o test/test
+	cd test && ./test
 
 gcov_report:
 	mkdir -p gcov
@@ -46,12 +48,14 @@ dvi:
 
 dist:
 	mkdir -p $(DIST_DIR)
-	cp -a ../../brick_game $(DIST_DIR)
-	cp -a ../../gui $(DIST_DIR)
-	cp -a ../../test $(DIST_DIR)
-	mv $(DIST_DIR) s21_Tetris
-	tar -czf s21_Tetris.tar.gz s21_Tetris
-	rm -rf s21_Tetris
+	cp -a brick_game $(DIST_DIR)
+	cp -a gui $(DIST_DIR)
+	cp -a test $(DIST_DIR)
+	cp -a *.c $(DIST_DIR)
+	cp -a *.h $(DIST_DIR)
+	cp -a Documentation.html $(DIST_DIR)
+	tar -czf s21_Tetris.tar.gz $(DIST_DIR)
+	rm -rf $(DIST_DIR)
 	
 clang_format:
 	cp ../../../materials/linters/.clang-format ../../brick_game/tetris/.clang-format
@@ -74,6 +78,6 @@ leaks_test: test
 	cd ../../test && leaks -atExit -- ./test
 
 clean:
-	cd ../../test && rm -f test && rm -f *.txt
+	cd test && rm -f test && rm -f *.txt
 	rm -rf gcov
 	rm -f s21_Tetris.tar.gz

@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 
-#include "../../brick_game/tetris/common.h"
+#include "../../common.h"
 #include "../../brick_game/tetris/tetris.h"
 
 void render(GameInfo_t info);
