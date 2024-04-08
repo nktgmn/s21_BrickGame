@@ -1,7 +1,7 @@
 CFLAGS = -Wall -Wextra -Werror
-INSTALL_FILES = brick_game/tetris/tetris.c gui/cli/console_front.c game.c common.c -lncurses
-TEST_FILES = test/test.c brick_game/tetris/tetris.c common.c gui/cli/console_front.c -lcheck -lncurses
-GCOV_FILES = test/test.c brick_game/tetris/tetris.c common.c -lcheck
+INSTALL_FILES = brick_game/tetris/tetris.c gui/cli/console_front.c game.c -lncurses
+TEST_FILES = test/test.c brick_game/tetris/tetris.c gui/cli/console_front.c -lcheck -lncurses
+GCOV_FILES = test/test.c brick_game/tetris/tetris.c -lcheck
 GCOVFLAGS = -fprofile-arcs -ftest-coverage --coverage
 DIST_DIR = s21_Tetris
 

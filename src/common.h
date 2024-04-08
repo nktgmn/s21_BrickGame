@@ -4,8 +4,6 @@
 #define FIELD_H 20
 #define FIELD_W 10
 
-#include <stdlib.h>
-
 typedef struct {
   int **field;
   int **next;
@@ -17,7 +15,5 @@ typedef struct {
 } GameInfo_t;
 
 typedef enum { None, GameStart, GamePause } Banner;
-
-void free_matrix(int **matrix, int H);
 
 #endif

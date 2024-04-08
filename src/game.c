@@ -37,8 +37,8 @@ void updateUserAction() {
   State_t *state = get_current_state();
 
   unsigned long long time_left = process_timer();
+  
   timeout(time_left);
-
   int c = getch();
 
   if (c == START_BUTTON) {
@@ -60,20 +60,18 @@ void updateUserAction() {
     userInput(Pause);
     render(updateCurrentState());
     char c = getch();
-    while ((c != 'p') && (c != 27)) {
+    while ((c != PAUSE_BUTTON) && (c != TERMINATE_BUTTON)) {
       c = getch();
     }
-    if (c == 'p') {
+    if (c == PAUSE_BUTTON) {
       userInput(Pause);
     } else {
       userInput(Terminate);
-      endwin();
-      exit(0);
+      terminate_game();
     }
   } else if (c == TERMINATE_BUTTON) {
     userInput(Terminate);
-    endwin();
-    exit(0);
+    terminate_game();
   } else if (c == ERR) {
     state->status = Shifting;
   }

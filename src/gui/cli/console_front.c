@@ -61,9 +61,23 @@ void render(GameInfo_t info) {
 
   wrefresh(params_window);
 
-  free_matrix(info.field, FIELD_H);
-  free_matrix(info.next, 4);
+  for (int i = 0; i < FIELD_H; i++) {
+    free(info.field[i]);
+  }
+  free(info.field);
+
+  for (int i = 0; i < 4; i++) {
+    free(info.next[i]);
+  }
+  free(info.next);
 
   delwin(game_window);
   delwin(params_window);
 }
+
+void terminate_game() {
+  endwin();
+  exit(0);
+}
+
+

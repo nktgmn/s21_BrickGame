@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <stdlib.h>
 
 #include "../../common.h"
 
@@ -11,10 +12,9 @@
 #define SPEED_STEP 30
 #define NEW_LEVEL_TRESHOLD 600
 #define MAX_LEVEL 10
-#define ACTION_BUTTON 32
-#define TERMINATE_BUTTON 27
-#define PAUSE_BUTTON 112
-#define START_BUTTON 115
+
+
+
 
 typedef enum {
   Start,
@@ -26,6 +26,7 @@ typedef enum {
   Down,
   Action
 } UserAction_t;
+
 
 typedef enum { Initial, Spawn, Moving, Shifting, Attaching, GameOver } Status_t;
 
@@ -72,5 +73,6 @@ void update_level();
 void start_game();
 unsigned long long current_time_millis();
 void pause_game();
+void free_matrix(int **matrix, int H);
 
 #endif

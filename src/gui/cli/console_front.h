@@ -2,10 +2,11 @@
 #define CONSOLE_FRONT_H
 
 #include <ncurses.h>
-
+#include <stdlib.h>
 #include "../../common.h"
-#include "../../brick_game/tetris/tetris.h"
+
 
 void render(GameInfo_t info);
+void terminate_game();
 
 #endif

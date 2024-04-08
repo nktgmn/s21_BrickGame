@@ -537,3 +537,11 @@ void pause_game() {
     state->start_time = current_time_millis();
   }
 }
+
+void free_matrix(int **matrix, int H) {
+  for (int i = 0; i < H; i++) {
+    free(matrix[i]);
+  }
+
+  free(matrix);
+}
